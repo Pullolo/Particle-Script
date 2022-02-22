@@ -10,7 +10,7 @@ class waterDrop{
         this.X = X;
         this.Y = Y;
         this.Gravity = Gravity
-        this.Yvel = 0;
+        this.Yvel = 2;
         this.Id = Id;
         bg.innerHTML += '<img class="rain" id="rain' + this.Id + '" src="' + img + '">';
     }
@@ -64,21 +64,21 @@ function start(){
     setInterval(() => {
         for(var x =0; x < 1; x++){
             // ustawienia kropel ----------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-            rain.newDrop(getRandomInt(-1, 101), -200, 1, i);
+            rain.newDrop(getRandomInt(-7, 101), -200, 1, i);
             //
             i++;
         }
         rain.allDrops().forEach(waterDrop =>{
             waterDrop.move();
             if(waterDrop.Ypos() > height){
-                rain.allDrops().shift();
                 waterDrop.remove();
+                rain.allDrops().shift();
             }
         });
         if(i > 400){
             i = 0;
         }
-    }, 15);
+    }, 20);
 }
 
 function getRandomInt(min, max) {
